@@ -6,14 +6,19 @@ public class DefaultSqlGenerator implements SelectGenerator {
 
 	private static final String DEFAULT_SELECT_LIST = "*";
 	private Table rootTable;
+	private SelectListBuilder selectList = new SelectListBuilder();
 	
 	public DefaultSqlGenerator(Table rootTable) {
 		this.rootTable = rootTable;
 	}
 	
+	public void addSelectValue(SelectValue value) {
+		selectList.addSelectValue(value);
+	}
+	
 	public String generate() {
 		StringJoiner statement = new StringJoiner(" ");
-		statement.add(generateSelectList());
+		statement.add(selectList.toSQL());
 		statement.add(generateFrom());
 		return statement.toString();
 	}
