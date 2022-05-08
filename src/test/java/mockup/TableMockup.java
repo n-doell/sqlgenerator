@@ -8,7 +8,15 @@ public class TableMockup {
 		return new Table(tableName);
 	}
 	
+	private Table createTable(String tableName, String alias) {
+		return new Table(tableName, alias);
+	}
+	
 	public Table getTable_User() {
 		return createTable("User");
+	}
+
+	public Table getTable_User_usr() {
+		return createTable("User", "usr");
 	}
 }

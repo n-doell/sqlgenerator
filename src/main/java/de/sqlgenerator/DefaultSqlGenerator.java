@@ -23,6 +23,6 @@ public class DefaultSqlGenerator implements SelectGenerator {
 	}
 	
 	private String generateFrom() {
-		return "FROM " + rootTable.tableName;
+		return "FROM " + rootTable.toSQL();
 	}
 }
