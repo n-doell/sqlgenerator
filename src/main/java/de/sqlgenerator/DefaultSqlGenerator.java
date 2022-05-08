@@ -2,7 +2,7 @@ package de.sqlgenerator;
 
 import java.util.StringJoiner;
 
-public class DefaultSqlGenerator implements SelectGenerator {
+public class DefaultSqlGenerator {
 
 	private static final String DEFAULT_SELECT_LIST = "*";
 	private Table rootTable;

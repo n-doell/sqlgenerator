@@ -7,11 +7,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import mockup.SelectValueMockup;
 import mockup.TableMockup;
 
 class DefaultSqlGeneratorTest {
 	
 	private TableMockup tableMock = new TableMockup();
+	private SelectValueMockup selectValueMock = new SelectValueMockup();
 	
 	@BeforeEach
 	void setUp() throws Exception {
@@ -24,14 +26,23 @@ class DefaultSqlGeneratorTest {
 	@Test
 	@DisplayName("Generate a minimal select statement")
 	void generate_withRootTable() {
-		SelectGenerator generator = new DefaultSqlGenerator(tableMock.getTable_User());
+		DefaultSqlGenerator generator = new DefaultSqlGenerator(tableMock.getTable_User());
 		assertEquals("SELECT * FROM User", generator.generate());
 	}
 	
 	@Test
 	@DisplayName("Generate a minimal select statement with table alias")
 	void generate_withRootTableAlias() {
-		SelectGenerator generator = new DefaultSqlGenerator(tableMock.getTable_User_usr());
+		DefaultSqlGenerator generator = new DefaultSqlGenerator(tableMock.getTable_User_usr());
 		assertEquals("SELECT * FROM User usr", generator.generate());
+	}
+
+	@Test
+	@DisplayName("Generate with select values")
+	void generate_withSelectValues() {
+		DefaultSqlGenerator generator = new DefaultSqlGenerator(tableMock.getTable_User());
+		generator.addSelectValue(selectValueMock.getSelectValue_firstname());
+		generator.addSelectValue(selectValueMock.getSelectValue_lastname_nachname());
+		assertEquals("SELECT firstname, lastname AS nachname FROM User", generator.generate());
 	}
 }
