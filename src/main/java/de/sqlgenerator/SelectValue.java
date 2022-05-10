@@ -2,10 +2,8 @@ package de.sqlgenerator;
 
 public class SelectValue implements SqlObject {
 
-	private static final String AS = "AS";
-	
-	private final String columnName;
-	private String alias;
+	protected final String columnName;
+	protected String alias;
 	
 	public SelectValue(String columnName) {
 		this.columnName = columnName;
@@ -15,13 +13,18 @@ public class SelectValue implements SqlObject {
 		this.columnName = columnName;
 		this.alias = alias;
 	}
+	
+	protected boolean hasNoAlias() {
+		return alias == null || alias.isBlank();
+	}
 
 	@Override
 	public String toSQL() {
-		if (alias == null) {
-			return columnName;	
+		if (hasNoAlias()) {
+			return columnName;		
 		}
-		return columnName + " " + AS + " " + alias;
+		return columnName + " " + SqlConst.AS + " " + alias;
+		
 	}
 	
 	

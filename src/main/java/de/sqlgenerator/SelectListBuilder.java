@@ -6,9 +6,6 @@ import java.util.StringJoiner;
 
 public class SelectListBuilder implements SqlObject {
 
-	private static final String DEFAULT_SELECT_VALUE = "*";
-	private static final String SELECT = "SELECT";
-	
 	private List<SelectValue> values = new ArrayList<SelectValue>();
 	
 	public void addSelectValue(SelectValue value) {
@@ -18,13 +15,13 @@ public class SelectListBuilder implements SqlObject {
 	@Override
 	public String toSQL() {
 		if (values.isEmpty()) {
-			return SELECT + " " + DEFAULT_SELECT_VALUE;	
+			return SqlConst.SELECT + " " + SqlConst.DEFAULT_SELECT_VALUE;	
 		}
 		StringJoiner joiner = new StringJoiner(", ");
 		values.forEach(value -> {
 			joiner.add(value.toSQL());
 		});
-		return SELECT + " " + joiner.toString();
+		return SqlConst.SELECT + " " + joiner.toString();
 	}
 
 	
