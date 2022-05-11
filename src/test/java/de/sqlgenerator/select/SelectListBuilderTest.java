@@ -37,4 +37,17 @@ public class SelectListBuilderTest {
 		builder.addSelectValue(lastname);
 		assertEquals("SELECT firstname, lastname", builder.toSQL());
 	}
+	
+	@Test
+	@DisplayName("Test Distinct")
+	void toSql_distinct() {
+		SelectListBuilder builder = new SelectListBuilder();
+		builder.addSelectValue(selectValueMock.getSelectValue_firstname());
+		// distinct is turned off by default
+		assertEquals("SELECT firstname", builder.toSQL());
+		builder.setDistinct(true);
+		assertEquals("SELECT DISTINCT firstname", builder.toSQL());
+		builder.setDistinct(false);
+		assertEquals("SELECT firstname", builder.toSQL());
+	}
 }

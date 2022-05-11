@@ -10,9 +10,14 @@ import de.sqlgenerator.SqlObject;
 public class SelectListBuilder implements SqlObject {
 
 	private List<SelectValue> values = new ArrayList<SelectValue>();
+	private boolean distinct = false;
 	
 	public void addSelectValue(SelectValue value) {
 		this.values.add(value);
+	}
+	
+	public void setDistinct(boolean distinct) {
+		this.distinct = distinct;
 	}
 	
 	@Override
@@ -24,7 +29,12 @@ public class SelectListBuilder implements SqlObject {
 		values.forEach(value -> {
 			joiner.add(value.toSQL());
 		});
-		return SqlConst.SELECT + " " + joiner.toString();
+		String selectList = joiner.toString();
+		if (distinct) {
+			selectList = "DISTINCT " + selectList;
+		}
+		return SqlConst.SELECT + " " + selectList;
+		
 	}
 
 	
