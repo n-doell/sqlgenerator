@@ -61,4 +61,13 @@ public class SelectValueTest {
 		value.setAlias("lowest");
 		assertEquals("MIN(age) AS lowest", value.toSQL());
 	}
+	
+	@Test
+	@DisplayName("Max select value")
+	void toSql_withMaxFunction() {
+		SelectValue value = selectValueMock.getSelectValue_age_maxFunction();
+		assertEquals("MAX(age)", value.toSQL());
+		value.setAlias("highest");
+		assertEquals("MAX(age) AS highest", value.toSQL());
+	}
 }

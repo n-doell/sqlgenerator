@@ -40,6 +40,10 @@ public class SelectValueMockup {
 		return createSelectValue("age", null, SelectValueFunction.MIN);
 	}
 	
+	public SelectValue getSelectValue_age_maxFunction() {
+		return createSelectValue("age", null, SelectValueFunction.MAX);
+	}
+	
 	public SelectValue getSelectValue_debt_sumFunction() {
 		return createSelectValue("debt", null, SelectValueFunction.SUM);
 	}

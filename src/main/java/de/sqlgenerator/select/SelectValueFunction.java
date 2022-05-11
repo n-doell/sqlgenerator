@@ -4,5 +4,6 @@ public enum SelectValueFunction {
 	COUNT,
 	AVG,
 	SUM,
-	MIN
+	MIN,
+	MAX
 }
