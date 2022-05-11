@@ -43,4 +43,13 @@ public class SelectValueTest {
 		value.setAlias("avg-age");
 		assertEquals("AVG(age) AS avg-age", value.toSQL());
 	}
+	
+	@Test
+	@DisplayName("Sum select value")
+	void toSql_withSumFunction() {
+		SelectValue value = selectValueMock.getSelectValue_debt_sumFunction();
+		assertEquals("SUM(debt)", value.toSQL());
+		value.setAlias("DEBT");
+		assertEquals("SUM(debt) AS DEBT", value.toSQL());
+	}
 }

@@ -44,6 +44,7 @@ public class SelectValue implements SqlObject {
 		switch (function) {
 			case COUNT: return "COUNT(" + value + ")";
 			case AVG: return "AVG(" + value + ")";
+			case SUM: return "SUM(" + value + ")";
 			default: return value;
 		}
 	}

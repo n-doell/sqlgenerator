@@ -35,4 +35,8 @@ public class SelectValueMockup {
 	public SelectValue getSelectValue_age_avgFunction() {
 		return createSelectValue("age", null, SelectValueFunction.AVG);
 	}
+	
+	public SelectValue getSelectValue_debt_sumFunction() {
+		return createSelectValue("debt", null, SelectValueFunction.SUM);
+	}
 }
