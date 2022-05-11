@@ -31,4 +31,8 @@ public class SelectValueMockup {
 	public SelectValue getSelectValue_lastname_countFunction() {
 		return createSelectValue("lastname", null, SelectValueFunction.COUNT);
 	}
+	
+	public SelectValue getSelectValue_age_avgFunction() {
+		return createSelectValue("age", null, SelectValueFunction.AVG);
+	}
 }

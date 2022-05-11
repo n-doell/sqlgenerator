@@ -43,6 +43,7 @@ public class SelectValue implements SqlObject {
 	protected String wrapInFunction(String value) {
 		switch (function) {
 			case COUNT: return "COUNT(" + value + ")";
+			case AVG: return "AVG(" + value + ")";
 			default: return value;
 		}
 	}

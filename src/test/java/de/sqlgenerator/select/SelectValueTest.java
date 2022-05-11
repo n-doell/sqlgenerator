@@ -35,4 +35,12 @@ public class SelectValueTest {
 		assertEquals("COUNT(lastname) AS nachname", value.toSQL());
 	}
 	
+	@Test
+	@DisplayName("Average select value")
+	void toSql_withAverageFunction() {
+		SelectValue value = selectValueMock.getSelectValue_age_avgFunction();
+		assertEquals("AVG(age)", value.toSQL());
+		value.setAlias("avg-age");
+		assertEquals("AVG(age) AS avg-age", value.toSQL());
+	}
 }
