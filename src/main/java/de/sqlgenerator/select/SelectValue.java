@@ -45,6 +45,7 @@ public class SelectValue implements SqlObject {
 			case COUNT: return "COUNT(" + value + ")";
 			case AVG: return "AVG(" + value + ")";
 			case SUM: return "SUM(" + value + ")";
+			case MIN: return "MIN(" + value + ")";
 			default: return value;
 		}
 	}

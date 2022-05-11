@@ -52,4 +52,13 @@ public class SelectValueTest {
 		value.setAlias("DEBT");
 		assertEquals("SUM(debt) AS DEBT", value.toSQL());
 	}
+	
+	@Test
+	@DisplayName("Min select value")
+	void toSql_withMinFunction() {
+		SelectValue value = selectValueMock.getSelectValue_age_minFunction();
+		assertEquals("MIN(age)", value.toSQL());
+		value.setAlias("lowest");
+		assertEquals("MIN(age) AS lowest", value.toSQL());
+	}
 }
