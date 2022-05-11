@@ -1,8 +1,11 @@
-package de.sqlgenerator;
+package de.sqlgenerator.select;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
+
+import de.sqlgenerator.SqlConst;
+import de.sqlgenerator.SqlObject;
 
 public class SelectListBuilder implements SqlObject {
 
@@ -15,7 +18,7 @@ public class SelectListBuilder implements SqlObject {
 	@Override
 	public String toSQL() {
 		if (values.isEmpty()) {
-			return SqlConst.SELECT + " " + SqlConst.DEFAULT_SELECT_VALUE;	
+			values.add(new AsteriskSelectValue());	
 		}
 		StringJoiner joiner = new StringJoiner(", ");
 		values.forEach(value -> {

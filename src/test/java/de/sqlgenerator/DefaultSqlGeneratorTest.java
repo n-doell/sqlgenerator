@@ -42,7 +42,7 @@ class DefaultSqlGeneratorTest {
 	void generate_withSelectValues() {
 		DefaultSqlGenerator generator = new DefaultSqlGenerator(tableMock.getTable_User());
 		generator.addSelectValue(selectValueMock.getSelectValue_firstname());
-		generator.addSelectValue(selectValueMock.getSelectValue_lastname_nachname());
+		generator.addSelectValue(selectValueMock.getSelectValue_lastname_nachnameAlias());
 		assertEquals("SELECT firstname, lastname AS nachname FROM User", generator.generate());
 	}
 }

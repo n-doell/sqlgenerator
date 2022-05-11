@@ -1,4 +1,4 @@
-package de.sqlgenerator;
+package de.sqlgenerator.select;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

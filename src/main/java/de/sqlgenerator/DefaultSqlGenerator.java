@@ -2,6 +2,9 @@ package de.sqlgenerator;
 
 import java.util.StringJoiner;
 
+import de.sqlgenerator.select.SelectValue;
+import de.sqlgenerator.select.SelectListBuilder;
+
 public class DefaultSqlGenerator {
 
 	private Table rootTable;
