@@ -1,7 +1,8 @@
 package de.sqlgenerator.where;
 
 public enum ComparisonOperator {
-	EQUALS("=");
+	EQUALS("="),
+	LESS_THAN("<");
 	
 	private String operator;
 	
