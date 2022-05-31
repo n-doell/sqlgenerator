@@ -4,11 +4,17 @@ import java.util.StringJoiner;
 
 import de.sqlgenerator.SqlObject;
 
-public abstract class WhereClause implements SqlObject {
+public class WhereClause implements SqlObject {
 
 	protected SqlObject leftSide;
 	protected SqlObject rightSide;
 	protected ComparisonOperator operator;
+	
+	public WhereClause(SqlObject leftSide, ComparisonOperator operator, SqlObject rightSide) {
+		this.leftSide = leftSide;
+		this.rightSide = rightSide;
+		this.operator = operator;
+	}
 	
 	@Override
 	public String toSQL() {
