@@ -16,6 +16,14 @@ public class WhereClause implements SqlObject {
 		this.operator = operator;
 	}
 	
+	/**
+	 * If you use this constructor you need to override toSQL or set 
+	 * {@link WhereClause#leftSide}, {@link WhereClause#rightSide} and {@link WhereClause#operator}
+	 * manually.
+	 */
+	protected WhereClause() {
+	}
+	
 	@Override
 	public String toSQL() {
 		StringJoiner joiner = new StringJoiner(" ");
