@@ -9,4 +9,8 @@ public class SqlConst {
 	public static final String FROM = "FROM";
 	
 	public static final String WHERE = "WHERE";
+	
+	public static final String NOT = "NOT"; 
+	public static final String NULL = "NULL";
+	public static final String IS = "IS";
 }

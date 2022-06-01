@@ -117,4 +117,18 @@ public class WhereClauseTest {
 		in = new In(mock.getConditionValue_firstname(), stringList);
 		assertEquals("firstname IN ('abc','def','xyz')", in.toSQL());
 	}
+	
+	@Test
+	@DisplayName("IS NULL where clause")
+	void isNull() {
+		WhereClause isNull = new NullCondition(mock.getConditionValue_age());
+		assertEquals("age IS NULL", isNull.toSQL());
+	}
+	
+	@Test
+	@DisplayName("IS NOT NULL where clause")
+	void isNotNull() {
+		WhereClause isNotNull = new NotNullCondition(mock.getConditionValue_age());
+		assertEquals("age IS NOT NULL", isNotNull.toSQL());
+	}
 }
