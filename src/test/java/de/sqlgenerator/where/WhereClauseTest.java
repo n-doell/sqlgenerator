@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import de.sqlgenerator.ComparisonOperator;
 import de.sqlgenerator.SqlObject;
 import mockup.ConditionValueMockup;
 

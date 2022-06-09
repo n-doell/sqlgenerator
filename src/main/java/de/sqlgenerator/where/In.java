@@ -3,6 +3,7 @@ package de.sqlgenerator.where;
 import java.util.List;
 import java.util.StringJoiner;
 
+import de.sqlgenerator.ComparisonOperator;
 import de.sqlgenerator.SqlObject;
 
 public class In extends WhereClause {

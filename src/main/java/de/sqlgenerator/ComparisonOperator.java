@@ -1,4 +1,4 @@
-package de.sqlgenerator.where;
+package de.sqlgenerator;
 
 public enum ComparisonOperator {
 	EQUALS("="),

@@ -13,4 +13,6 @@ public class SqlConst {
 	public static final String NOT = "NOT"; 
 	public static final String NULL = "NULL";
 	public static final String IS = "IS";
+	
+	public static final String ON = "ON";
 }

@@ -17,7 +17,7 @@ public class FromBuilderTest {
 		FromBuilder from = new FromBuilder(tableMock.getTable_User());
 		assertEquals("FROM User", from.toSQL());
 		from =  new FromBuilder(tableMock.getTable_User_usr());
-		assertEquals("FROM User usr", from.toSQL());
+		assertEquals("FROM User AS usr", from.toSQL());
 	}
 	
 	@Test
@@ -25,6 +25,6 @@ public class FromBuilderTest {
 	void multipleTables_noJoin() {
 		FromBuilder from = new FromBuilder(tableMock.getTable_User());
 		from.addTable(tableMock.getTable_address_addr());
-		assertEquals("FROM User, Address addr", from.toSQL());
+		assertEquals("FROM User, Address AS addr", from.toSQL());
 	}
 }

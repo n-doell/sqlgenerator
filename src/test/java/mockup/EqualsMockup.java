@@ -1,7 +1,7 @@
 package mockup;
 
+import de.sqlgenerator.ComparisonOperator;
 import de.sqlgenerator.SqlObject;
-import de.sqlgenerator.where.ComparisonOperator;
 import de.sqlgenerator.where.NumberSqlObejct;
 import de.sqlgenerator.where.WhereClause;
 

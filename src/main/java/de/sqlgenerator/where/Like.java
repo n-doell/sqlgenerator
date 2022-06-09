@@ -2,6 +2,7 @@ package de.sqlgenerator.where;
 
 import java.util.StringJoiner;
 
+import de.sqlgenerator.ComparisonOperator;
 import de.sqlgenerator.SqlObject;
 
 public class Like extends WhereClause {

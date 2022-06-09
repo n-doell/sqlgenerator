@@ -37,7 +37,7 @@ class DefaultSqlGeneratorTest {
 	@DisplayName("Generate a minimal select statement with table alias")
 	void generate_withRootTableAlias() {
 		DefaultSqlGenerator generator = new DefaultSqlGenerator(tableMock.getTable_User_usr());
-		assertEquals("SELECT * FROM User usr", generator.generate());
+		assertEquals("SELECT * FROM User AS usr", generator.generate());
 	}
 
 	@Test

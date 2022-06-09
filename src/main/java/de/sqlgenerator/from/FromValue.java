@@ -7,6 +7,14 @@ public class FromValue implements SqlObject {
 
 	private Table table;
 	
+	/**
+	 * If you use this constructor you also need to override the 
+	 * {@link #toSQL()} method or set the {@link #table} attribute
+	 * manually
+	 */
+	protected FromValue() {
+	}
+	
 	public FromValue(Table table) {
 		this.table = table;
 	}
