@@ -19,4 +19,12 @@ public class TableMockup {
 	public Table getTable_User_usr() {
 		return createTable("User", "usr");
 	}
+	
+	public Table getTable_address() {
+		return createTable("Address");
+	}
+	
+	public Table getTable_address_addr() {
+		return createTable("Address", "addr");
+	}
 }

@@ -34,7 +34,6 @@ public class SelectListBuilder implements SqlObject {
 			selectList = "DISTINCT " + selectList;
 		}
 		return SqlConst.SELECT + " " + selectList;
-		
 	}
 
 	
