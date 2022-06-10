@@ -1,6 +1,6 @@
 package de.sqlgenerator.from;
 
-public enum JoinEnum {
+public enum JoinType {
 	LEFT_JOIN("LEFT JOIN"),
 	RIGHT_JOIN("RIGHT JOIN"),
 	INNER_JOIN("INNER JOIN"),
@@ -8,7 +8,7 @@ public enum JoinEnum {
 	
 	private String sqlString; 
 	
-	private JoinEnum(String sqlString) {
+	private JoinType(String sqlString) {
 		this.sqlString = sqlString;
 	}
 	

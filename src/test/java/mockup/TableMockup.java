@@ -20,11 +20,15 @@ public class TableMockup {
 		return createTable("User", "usr");
 	}
 	
-	public Table getTable_address() {
+	public Table getTable_Address() {
 		return createTable("Address");
 	}
 	
-	public Table getTable_address_addr() {
+	public Table getTable_Address_addr() {
 		return createTable("Address", "addr");
+	}
+	
+	public Table getTable_Order() {
+		return createTable("order");
 	}
 }

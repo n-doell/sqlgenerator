@@ -10,23 +10,45 @@ import de.sqlgenerator.Table;
 
 public class FromBuilder implements SqlObject {
 
-	private List<FromValue> values = new ArrayList<FromValue>();
+	private List<Table> tables = new ArrayList<Table>();
+	private List<Join> joins = new ArrayList<Join>();
 	
 	public FromBuilder(Table table) {
-		values.add(new FromValue(table));
+		tables.add(table);
 	}
 	
 	public void addTable(Table table) {
-		values.add(new FromValue(table));
+		tables.add(table);
+	}
+	
+	public void addJoin(Join join) {
+		joins.add(join);
 	}
 
 	@Override
 	public String toSQL() {
-		StringJoiner joiner = new StringJoiner(", ");
-		values.forEach(value -> {
-			joiner.add(value.toSQL());
-		});
-		return SqlConst.FROM + " " + joiner.toString();
+		StringJoiner joiner = new StringJoiner(" ");
+		joiner.add(SqlConst.FROM);
+		joiner.add(getTablesAsSql());
+		if (!joins.isEmpty()) {
+			joiner.add(getJoinsAsSql());	
+		}
+		return joiner.toString();
 	}
 
+	private String getTablesAsSql() {
+		StringJoiner tableJoiner = new StringJoiner(", ");
+		tables.forEach(table -> {
+			tableJoiner.add(table.toSQL());
+		});
+		return tableJoiner.toString();
+	}
+	
+	private String getJoinsAsSql() {
+		StringJoiner joinJoiner = new StringJoiner(" ");
+		joins.forEach(join -> {
+			joinJoiner.add(join.toSQL());
+		});
+		return joinJoiner.toString();
+	}
 }

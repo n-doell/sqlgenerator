@@ -36,10 +36,14 @@ public class ColumnMockup {
 	}
 	
 	public Column getColumn_Address_user() {
-		return createColumn(tableMock.getTable_address(), "user");
+		return createColumn(tableMock.getTable_Address(), "user");
 	}
 	
 	public Column getColumn_Address_as_addr_user() {
-		return createColumn(tableMock.getTable_address_addr(), "user");
+		return createColumn(tableMock.getTable_Address_addr(), "user");
+	}
+	
+	public Column getColumn_Order_user() {
+		return createColumn(tableMock.getTable_Order(), "user");
 	}
 }

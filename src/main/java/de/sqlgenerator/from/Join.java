@@ -5,14 +5,15 @@ import java.util.StringJoiner;
 import de.sqlgenerator.Column;
 import de.sqlgenerator.ComparisonOperator;
 import de.sqlgenerator.SqlConst;
+import de.sqlgenerator.SqlObject;
 import de.sqlgenerator.Table;
 
-public class Join extends FromValue {
+public class Join implements SqlObject {
 
 	private Column leftSide; 
 	private Column rightSide;
 	private Table tableExpression;
-	private JoinEnum type;
+	private JoinType type;
 	
 	// TODO: prevent combination: alias in tableExpression but not in matching column
 	// TOOD: check column and table match
@@ -26,7 +27,7 @@ public class Join extends FromValue {
 	 * @param rightSide the column on the right side of the join
 	 * @param toJoin table to join. Needs to match table from one of the {@link Column} parameters  
 	 */
-	public Join(JoinEnum type, Table toJoin, Column leftSide, Column rightSide) {
+	public Join(JoinType type, Table toJoin, Column leftSide, Column rightSide) {
 		this.type = type;
 		this.tableExpression = toJoin; 
 		this.leftSide = leftSide;
