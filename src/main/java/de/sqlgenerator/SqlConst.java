@@ -15,4 +15,6 @@ public class SqlConst {
 	public static final String IS = "IS";
 	
 	public static final String ON = "ON";
+	
+	public static final String GROUP_BY = "GROUP BY";
 }

@@ -20,5 +20,4 @@ public class Column implements SqlObject {
 		return tableName + "." + columnName;
 	} 
 
-	
 }
