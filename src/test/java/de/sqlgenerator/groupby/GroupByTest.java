@@ -1,11 +1,10 @@
-package de.sqlgeneratorgroupby;
+package de.sqlgenerator.groupby;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import de.sqlgenerator.groupby.GroupBy;
 import mockup.ColumnMockup;
 
 public class GroupByTest {
@@ -22,5 +21,5 @@ public class GroupByTest {
 		groupBy.addColumn(columnMock.getColumn_User_as_usr_lastname());
 		assertEquals("GROUP BY User.age, User.firstname, usr.lastname", groupBy.toSQL());
 	}
-	
+
 }
