@@ -55,6 +55,6 @@ class DefaultSqlGeneratorTest {
 		DefaultSqlGenerator generator = new DefaultSqlGenerator(tableMock.getTable_User());
 		assertEquals("SELECT * FROM User", generator.generate());
 		generator.addWhereClause(equalsMock.getEquals_AgeEquals10(), LogicalOperator.AND);
-		assertEquals("SELECT * FROM User WHERE age = 10", generator.generate());
+		assertEquals("SELECT * FROM User WHERE User.age = 10", generator.generate());
 	}
 }

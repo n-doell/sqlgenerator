@@ -23,7 +23,7 @@ public class ConditionBuilderTest {
 	void singleWhereCondition() {
 		ConditionBuilder builder = ConditionBuilder.createWhereClauseConditionBuilder();
 		builder.addCondition(equalsMock.getEquals_AgeEquals10(), LogicalOperator.AND);
-		assertEquals("WHERE age = 10", builder.toSQL());
+		assertEquals("WHERE User.age = 10", builder.toSQL());
 	}
 	
 	@Test
@@ -33,7 +33,7 @@ public class ConditionBuilderTest {
 		builder.addCondition(equalsMock.getEquals_AgeEquals10(), LogicalOperator.AND);
 		builder.addCondition(equalsMock.getEquals_AgeEquals15(), LogicalOperator.OR);
 		builder.addCondition(equalsMock.getEquals_AgeEquals20(), LogicalOperator.AND);
-		assertEquals("WHERE age = 10 OR age = 15 AND age = 20", builder.toSQL());
+		assertEquals("WHERE User.age = 10 OR User.age = 15 AND User.age = 20", builder.toSQL());
 	}
 
 	@Test
@@ -48,7 +48,7 @@ public class ConditionBuilderTest {
 	void singleHavingCondition() {
 		ConditionBuilder builder = ConditionBuilder.createHavingConditionBuilder();
 		builder.addCondition(equalsMock.getEquals_AgeEquals10(), LogicalOperator.AND);
-		assertEquals("HAVING age = 10", builder.toSQL());
+		assertEquals("HAVING User.age = 10", builder.toSQL());
 	}
 	
 	@Test
@@ -58,6 +58,6 @@ public class ConditionBuilderTest {
 		builder.addCondition(equalsMock.getEquals_AgeEquals10(), LogicalOperator.AND);
 		builder.addCondition(equalsMock.getEquals_AgeEquals15(), LogicalOperator.OR);
 		builder.addCondition(equalsMock.getEquals_AgeEquals20(), LogicalOperator.AND);
-		assertEquals("HAVING age = 10 OR age = 15 AND age = 20", builder.toSQL());
+		assertEquals("HAVING User.age = 10 OR User.age = 15 AND User.age = 20", builder.toSQL());
 	}
 }
