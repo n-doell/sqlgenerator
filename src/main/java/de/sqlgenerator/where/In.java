@@ -1,20 +1,20 @@
 package de.sqlgenerator.where;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 
-import de.sqlgenerator.ComparisonOperator;
 import de.sqlgenerator.SqlObject;
 
 public class In extends Condition {
 
 	private SqlObject leftSide;
-	private List<SqlObject> rightSide;
+	private List<SqlObject> rightSide = new ArrayList<SqlObject>();
 	
 	public In(SqlObject leftSide, List<SqlObject> rightSide) {
 		super();
 		this.leftSide = leftSide;
-		this.rightSide = rightSide;
+		this.rightSide.addAll(rightSide);
 	}
 	
 	@Override

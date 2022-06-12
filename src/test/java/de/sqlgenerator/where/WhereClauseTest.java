@@ -2,6 +2,7 @@ package de.sqlgenerator.where;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -117,6 +118,14 @@ public class WhereClauseTest {
 		List<SqlObject> stringList = Arrays.asList(new StringSqlObject("abc"), new StringSqlObject("def"), new StringSqlObject("xyz"));
 		Condition inString = new In(columnMock.getColumn_User_firstname(), stringList);
 		assertEquals("User.firstname IN ('abc','def','xyz')", inString.toSQL());
+		
+		List<SqlObject> singleItemList = Arrays.asList(new NumberSqlObejct(10));
+		Condition inSingleItem = new In(columnMock.getColumn_User_age(), singleItemList);
+		assertEquals("User.age IN (10)", inSingleItem.toSQL());
+		
+		List<SqlObject> emptyList = new ArrayList<SqlObject>();
+		Condition inEmptyList = new In(columnMock.getColumn_User_age(), emptyList);
+		assertEquals("User.age IN ()", inEmptyList.toSQL());
 	}
 	
 	@Test
