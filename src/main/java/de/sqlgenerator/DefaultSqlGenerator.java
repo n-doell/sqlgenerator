@@ -2,11 +2,12 @@ package de.sqlgenerator;
 
 import java.util.StringJoiner;
 
+import de.sqlgenerator.groupby.OrderBy;
 import de.sqlgenerator.select.SelectListBuilder;
 import de.sqlgenerator.select.SelectValue;
 import de.sqlgenerator.where.ConditionBuilder;
 import de.sqlgenerator.where.LogicalOperator;
-import de.sqlgenerator.where.WhereClause;
+import de.sqlgenerator.where.Condition;
 
 public class DefaultSqlGenerator {
 
@@ -22,7 +23,7 @@ public class DefaultSqlGenerator {
 		selectList.addSelectValue(value);
 	}
 	
-	public void addWhereClause(WhereClause clause, LogicalOperator operator) {
+	public void addWhereClause(Condition clause, LogicalOperator operator) {
 		where.addCondition(clause, operator);
 	}
 	

@@ -6,7 +6,7 @@ import java.util.StringJoiner;
 import de.sqlgenerator.ComparisonOperator;
 import de.sqlgenerator.SqlObject;
 
-public class In extends WhereClause {
+public class In extends Condition {
 
 	private SqlObject leftSide;
 	private List<SqlObject> rightSide;

@@ -3,25 +3,25 @@ package mockup;
 import de.sqlgenerator.ComparisonOperator;
 import de.sqlgenerator.SqlObject;
 import de.sqlgenerator.where.NumberSqlObejct;
-import de.sqlgenerator.where.WhereClause;
+import de.sqlgenerator.where.Condition;
 
 public class EqualsMockup {
 
 	private ConditionValueMockup conditionMock = new ConditionValueMockup();
 	
-	private WhereClause createEquals(SqlObject leftSide, SqlObject rightSide) {
-		return new WhereClause(leftSide, ComparisonOperator.EQUALS, rightSide);
+	private Condition createEquals(SqlObject leftSide, SqlObject rightSide) {
+		return new Condition(leftSide, ComparisonOperator.EQUALS, rightSide);
 	}
 	
-	public WhereClause getEquals_AgeEquals10() {
+	public Condition getEquals_AgeEquals10() {
 		return createEquals(conditionMock.getConditionValue_age(), new NumberSqlObejct(10));
 	}
 	
-	public WhereClause getEquals_AgeEquals15() {
+	public Condition getEquals_AgeEquals15() {
 		return createEquals(conditionMock.getConditionValue_age(), new NumberSqlObejct(15));
 	}
 	
-	public WhereClause getEquals_AgeEquals20() {
+	public Condition getEquals_AgeEquals20() {
 		return createEquals(conditionMock.getConditionValue_age(), new NumberSqlObejct(20));
 	}
 }

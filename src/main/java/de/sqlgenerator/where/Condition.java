@@ -5,13 +5,13 @@ import java.util.StringJoiner;
 import de.sqlgenerator.ComparisonOperator;
 import de.sqlgenerator.SqlObject;
 
-public class WhereClause implements SqlObject {
+public class Condition implements SqlObject {
 
 	protected SqlObject leftSide;
 	protected SqlObject rightSide;
 	protected ComparisonOperator operator;
 	
-	public WhereClause(SqlObject leftSide, ComparisonOperator operator, SqlObject rightSide) {
+	public Condition(SqlObject leftSide, ComparisonOperator operator, SqlObject rightSide) {
 		this.leftSide = leftSide;
 		this.rightSide = rightSide;
 		this.operator = operator;
@@ -19,10 +19,10 @@ public class WhereClause implements SqlObject {
 	
 	/**
 	 * If you use this constructor you need to override toSQL or set 
-	 * {@link WhereClause#leftSide}, {@link WhereClause#rightSide} and {@link WhereClause#operator}
+	 * {@link Condition#leftSide}, {@link Condition#rightSide} and {@link Condition#operator}
 	 * manually.
 	 */
-	protected WhereClause() {
+	protected Condition() {
 	}
 	
 	@Override

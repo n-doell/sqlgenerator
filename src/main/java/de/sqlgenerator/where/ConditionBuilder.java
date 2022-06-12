@@ -11,11 +11,11 @@ public class ConditionBuilder implements SqlObject {
 
 	private List<WhereClauseWithOperator> clauses = new ArrayList<WhereClauseWithOperator>();
 	
-	public void addCondition(WhereClause clause, LogicalOperator operator) {
+	public void addCondition(Condition clause, LogicalOperator operator) {
 		clauses.add(new WhereClauseWithOperator(clause, operator));
 	}
 	
-	public void addCondition(WhereClause clause) {
+	public void addCondition(Condition clause) {
 		clauses.add(new WhereClauseWithOperator(clause, LogicalOperator.AND));
 	}
 	
@@ -39,15 +39,15 @@ public class ConditionBuilder implements SqlObject {
 
 	private class WhereClauseWithOperator {
 	
-		private WhereClause clause;
+		private Condition clause;
 		private LogicalOperator operator;
 		
-		public WhereClauseWithOperator(WhereClause clause, LogicalOperator operator) {
+		public WhereClauseWithOperator(Condition clause, LogicalOperator operator) {
 			this.clause = clause;
 			this.operator = operator;
 		}
 		
-		public WhereClause getWhereClause() {
+		public Condition getWhereClause() {
 			return clause;
 		}
 		

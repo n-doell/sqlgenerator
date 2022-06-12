@@ -19,85 +19,85 @@ public class WhereClauseTest {
 	@Test
 	@DisplayName("equals where clause")
 	void equals() {
-		WhereClause equals = new WhereClause(mock.getConditionValue_firstname(), ComparisonOperator.EQUALS , mock.getConditionValue_lastname());
+		Condition equals = new Condition(mock.getConditionValue_firstname(), ComparisonOperator.EQUALS , mock.getConditionValue_lastname());
 		assertEquals("firstname = lastname", equals.toSQL());
 		
-		equals = new WhereClause(mock.getConditionValue_firstname(), ComparisonOperator.EQUALS ,new StringSqlObject("peter"));
+		equals = new Condition(mock.getConditionValue_firstname(), ComparisonOperator.EQUALS ,new StringSqlObject("peter"));
 		assertEquals("firstname = 'peter'", equals.toSQL());
 		
-		equals = new WhereClause(mock.getConditionValue_age(), ComparisonOperator.EQUALS , new NumberSqlObejct(20));
+		equals = new Condition(mock.getConditionValue_age(), ComparisonOperator.EQUALS , new NumberSqlObejct(20));
 		assertEquals("age = 20", equals.toSQL());
 	}
 	
 	@Test
 	@DisplayName("less than where clause")
 	void lessThan() {
-		WhereClause less = new WhereClause(mock.getConditionValue_age(), ComparisonOperator.LESS_THAN, mock.getConditionValue_firstname());
+		Condition less = new Condition(mock.getConditionValue_age(), ComparisonOperator.LESS_THAN, mock.getConditionValue_firstname());
 		assertEquals("age < firstname", less.toSQL());
 		
-		less = new WhereClause(mock.getConditionValue_firstname(), ComparisonOperator.LESS_THAN, new StringSqlObject("peter"));
+		less = new Condition(mock.getConditionValue_firstname(), ComparisonOperator.LESS_THAN, new StringSqlObject("peter"));
 		assertEquals("firstname < 'peter'", less.toSQL());
 		
-		less = new WhereClause(mock.getConditionValue_age(), ComparisonOperator.LESS_THAN, new NumberSqlObejct(10));
+		less = new Condition(mock.getConditionValue_age(), ComparisonOperator.LESS_THAN, new NumberSqlObejct(10));
 		assertEquals("age < 10", less.toSQL());
 	}
 	
 	@Test
 	@DisplayName("less or equal where clause")
 	void lessOrEqual() {
-		WhereClause lessOrEqual = new WhereClause(mock.getConditionValue_age(), ComparisonOperator.LESS_OR_EQUAL, new NumberSqlObejct(10));
+		Condition lessOrEqual = new Condition(mock.getConditionValue_age(), ComparisonOperator.LESS_OR_EQUAL, new NumberSqlObejct(10));
 		assertEquals("age <= 10", lessOrEqual.toSQL());
 		
-		lessOrEqual = new WhereClause(mock.getConditionValue_firstname(), ComparisonOperator.LESS_OR_EQUAL, mock.getConditionValue_lastname());
+		lessOrEqual = new Condition(mock.getConditionValue_firstname(), ComparisonOperator.LESS_OR_EQUAL, mock.getConditionValue_lastname());
 		assertEquals("firstname <= lastname", lessOrEqual.toSQL());
 		
-		lessOrEqual = new WhereClause(mock.getConditionValue_firstname(), ComparisonOperator.LESS_OR_EQUAL, new StringSqlObject("peter"));
+		lessOrEqual = new Condition(mock.getConditionValue_firstname(), ComparisonOperator.LESS_OR_EQUAL, new StringSqlObject("peter"));
 		assertEquals("firstname <= 'peter'", lessOrEqual.toSQL());
 	}
 	
 	@Test
 	@DisplayName("greater than where clause")
 	void greaterThan() {
-		WhereClause greaterThan = new WhereClause(mock.getConditionValue_age(), ComparisonOperator.GREATER_THAN, new NumberSqlObejct(10));
+		Condition greaterThan = new Condition(mock.getConditionValue_age(), ComparisonOperator.GREATER_THAN, new NumberSqlObejct(10));
 		assertEquals("age > 10", greaterThan.toSQL());
 		
-		greaterThan = new WhereClause(mock.getConditionValue_firstname(), ComparisonOperator.GREATER_THAN, new StringSqlObject("peter"));
+		greaterThan = new Condition(mock.getConditionValue_firstname(), ComparisonOperator.GREATER_THAN, new StringSqlObject("peter"));
 		assertEquals("firstname > 'peter'", greaterThan.toSQL());
 		
-		greaterThan = new WhereClause(mock.getConditionValue_firstname(), ComparisonOperator.GREATER_THAN, mock.getConditionValue_lastname());
+		greaterThan = new Condition(mock.getConditionValue_firstname(), ComparisonOperator.GREATER_THAN, mock.getConditionValue_lastname());
 		assertEquals("firstname > lastname", greaterThan.toSQL());
 	}
 	
 	@Test
 	@DisplayName("greater or equals where clause")
 	void greaterOrEquals() {
-		WhereClause greaterOrEquals = new WhereClause(mock.getConditionValue_age(), ComparisonOperator.GREATER_OR_EQUAL, new NumberSqlObejct(10));
+		Condition greaterOrEquals = new Condition(mock.getConditionValue_age(), ComparisonOperator.GREATER_OR_EQUAL, new NumberSqlObejct(10));
 		assertEquals("age >= 10", greaterOrEquals.toSQL());
 		
-		greaterOrEquals = new WhereClause(mock.getConditionValue_firstname(), ComparisonOperator.GREATER_OR_EQUAL, mock.getConditionValue_lastname());
+		greaterOrEquals = new Condition(mock.getConditionValue_firstname(), ComparisonOperator.GREATER_OR_EQUAL, mock.getConditionValue_lastname());
 		assertEquals("firstname >= lastname", greaterOrEquals.toSQL());
 		
-		greaterOrEquals = new WhereClause(mock.getConditionValue_firstname(), ComparisonOperator.GREATER_OR_EQUAL, new StringSqlObject("peter"));
+		greaterOrEquals = new Condition(mock.getConditionValue_firstname(), ComparisonOperator.GREATER_OR_EQUAL, new StringSqlObject("peter"));
 		assertEquals("firstname >= 'peter'", greaterOrEquals.toSQL());
 	}
 	
 	@Test
 	@DisplayName("Not Equal where clause")
 	void notEqual() {
-		WhereClause notEqual = new WhereClause(mock.getConditionValue_age(), ComparisonOperator.NOT_EQUAL, new NumberSqlObejct(10));
+		Condition notEqual = new Condition(mock.getConditionValue_age(), ComparisonOperator.NOT_EQUAL, new NumberSqlObejct(10));
 		assertEquals("age <> 10", notEqual.toSQL());
 		
-		notEqual = new WhereClause(mock.getConditionValue_firstname(), ComparisonOperator.NOT_EQUAL, mock.getConditionValue_lastname());
+		notEqual = new Condition(mock.getConditionValue_firstname(), ComparisonOperator.NOT_EQUAL, mock.getConditionValue_lastname());
 		assertEquals("firstname <> lastname", notEqual.toSQL());
 		
-		notEqual = new WhereClause(mock.getConditionValue_firstname(), ComparisonOperator.NOT_EQUAL, new StringSqlObject("peter"));
+		notEqual = new Condition(mock.getConditionValue_firstname(), ComparisonOperator.NOT_EQUAL, new StringSqlObject("peter"));
 		assertEquals("firstname <> 'peter'", notEqual.toSQL());		
 	}
 	
 	@Test
 	@DisplayName("Like where clause")
 	void like() {
-		WhereClause like = new Like(mock.getConditionValue_age(), new NumberSqlObejct(10));
+		Condition like = new Like(mock.getConditionValue_age(), new NumberSqlObejct(10));
 		assertEquals("age LIKE '10'", like.toSQL());
 		
 		like = new Like(mock.getConditionValue_firstname(), mock.getConditionValue_lastname());
@@ -111,7 +111,7 @@ public class WhereClauseTest {
 	@DisplayName("IN where clause")
 	void in() {
 		List<SqlObject> numberList = Arrays.asList(new NumberSqlObejct(10), new NumberSqlObejct(10.5F), new NumberSqlObejct(1L));
-		WhereClause in = new In(mock.getConditionValue_age(), numberList);
+		Condition in = new In(mock.getConditionValue_age(), numberList);
 		assertEquals("age IN (10,10.5,1)", in.toSQL());
 		
 		List<SqlObject> stringList = Arrays.asList(new StringSqlObject("abc"), new StringSqlObject("def"), new StringSqlObject("xyz"));
@@ -122,14 +122,14 @@ public class WhereClauseTest {
 	@Test
 	@DisplayName("IS NULL where clause")
 	void isNull() {
-		WhereClause isNull = new NullCondition(mock.getConditionValue_age());
+		Condition isNull = new NullCondition(mock.getConditionValue_age());
 		assertEquals("age IS NULL", isNull.toSQL());
 	}
 	
 	@Test
 	@DisplayName("IS NOT NULL where clause")
 	void isNotNull() {
-		WhereClause isNotNull = new NotNullCondition(mock.getConditionValue_age());
+		Condition isNotNull = new NotNullCondition(mock.getConditionValue_age());
 		assertEquals("age IS NOT NULL", isNotNull.toSQL());
 	}
 }

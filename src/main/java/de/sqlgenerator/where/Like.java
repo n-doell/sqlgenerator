@@ -5,7 +5,7 @@ import java.util.StringJoiner;
 import de.sqlgenerator.ComparisonOperator;
 import de.sqlgenerator.SqlObject;
 
-public class Like extends WhereClause {
+public class Like extends Condition {
 
 	public Like(SqlObject leftSide, SqlObject rightSide) {
 		super(leftSide, ComparisonOperator.LIKE, rightSide);

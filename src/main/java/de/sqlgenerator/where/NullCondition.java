@@ -5,7 +5,7 @@ import java.util.StringJoiner;
 import de.sqlgenerator.SqlConst;
 import de.sqlgenerator.SqlObject;
 
-public class NullCondition extends WhereClause {
+public class NullCondition extends Condition {
 
 	public NullCondition(SqlObject expectedNullObject) {
 		super();
