@@ -7,16 +7,21 @@ import java.util.StringJoiner;
 import de.sqlgenerator.SqlConst;
 import de.sqlgenerator.SqlObject;
 
-public class WhereClauseBuilder implements SqlObject {
+public class ConditionBuilder implements SqlObject {
 
-	private List<WhereClauseWithOperator> clauses = new ArrayList<WhereClauseWithOperator>();
+	private List<ConditionWithOperator> clauses = new ArrayList<ConditionWithOperator>();
+	private final String conditionType; // WHERE or HAVING
+	
+	private ConditionBuilder(String conditionType) {
+		this.conditionType = conditionType;
+	}
 	
 	public void addCondition(Condition clause, LogicalOperator operator) {
-		clauses.add(new WhereClauseWithOperator(clause, operator));
+		clauses.add(new ConditionWithOperator(clause, operator));
 	}
 	
 	public void addCondition(Condition clause) {
-		clauses.add(new WhereClauseWithOperator(clause, LogicalOperator.AND));
+		clauses.add(new ConditionWithOperator(clause, LogicalOperator.AND));
 	}
 	
 	@Override
@@ -26,7 +31,7 @@ public class WhereClauseBuilder implements SqlObject {
 		}
 		
 		StringJoiner joiner = new StringJoiner(" ");
-		joiner.add(SqlConst.WHERE);
+		joiner.add(conditionType);
 		for (int i = 0; i < clauses.size(); i++) {
 			if (i != 0) {
 				joiner.add(clauses.get(i).getOperator().getValue());
@@ -36,13 +41,21 @@ public class WhereClauseBuilder implements SqlObject {
 		
 		return joiner.toString();
 	}
+	
+	public static final ConditionBuilder createWhereClauseConditionBuilder() {
+		return new ConditionBuilder(SqlConst.WHERE);
+	}
+	
+	public static final ConditionBuilder createHavingConditionBuilder() {
+		return new ConditionBuilder(SqlConst.HAVING);
+	}
 
-	private class WhereClauseWithOperator {
+	private class ConditionWithOperator {
 	
 		private Condition clause;
 		private LogicalOperator operator;
 		
-		public WhereClauseWithOperator(Condition clause, LogicalOperator operator) {
+		public ConditionWithOperator(Condition clause, LogicalOperator operator) {
 			this.clause = clause;
 			this.operator = operator;
 		}

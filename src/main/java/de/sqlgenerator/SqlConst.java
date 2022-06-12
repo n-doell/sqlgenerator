@@ -18,4 +18,5 @@ public class SqlConst {
 	
 	public static final String GROUP_BY = "GROUP BY";
 	public static final String ORDER_BY = "ORDER BY";
+	public static final String HAVING = "HAVING";
 }
