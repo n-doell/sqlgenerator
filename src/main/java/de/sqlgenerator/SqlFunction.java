@@ -3,7 +3,9 @@ package de.sqlgenerator;
 public enum SqlFunction {
 	COUNT("COUNT"),
 	AVERAGE("AVG"),
-	SUM("SUM");
+	SUM("SUM"),
+	MIN("MIN"),
+	MAX("MAX");
 	
 	private String functionName;
 	

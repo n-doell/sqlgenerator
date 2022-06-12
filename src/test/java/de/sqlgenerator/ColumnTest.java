@@ -36,5 +36,11 @@ public class ColumnTest {
 		
 		Column sumColumn = columnMock.getColumn_User_age_sum();
 		assertEquals("SUM(User.age)", sumColumn.toSQL());
+		
+		Column minColumn = columnMock.getColumn_User_age_min();
+		assertEquals("MIN(User.age)", minColumn.toSQL());
+		
+		Column maxColumn = columnMock.getColumn_User_age_max();
+		assertEquals("MAX(User.age)", maxColumn.toSQL());
 	}
 }

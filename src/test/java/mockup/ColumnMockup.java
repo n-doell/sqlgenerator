@@ -35,6 +35,14 @@ public class ColumnMockup {
 		return new Column("age", tableMock.getTable_User(), SqlFunction.SUM);
 	}
 	
+	public Column getColumn_User_age_min() {
+		return new Column("age", tableMock.getTable_User(), SqlFunction.MIN);
+	}
+	
+	public Column getColumn_User_age_max() {
+		return new Column("age", tableMock.getTable_User(), SqlFunction.MAX);
+	}
+	
 	public Column getColumn_User_id() {
 		return new Column("id", tableMock.getTable_User());
 	}
