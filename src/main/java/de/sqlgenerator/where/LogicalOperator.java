@@ -2,7 +2,8 @@ package de.sqlgenerator.where;
 
 public enum LogicalOperator {
 	AND("AND"),
-	OR("OR");
+	OR("OR"), 
+	BETWEEN("BETWEEN");
 	
 	private String operator;
 	

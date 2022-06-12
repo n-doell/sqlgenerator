@@ -10,11 +10,13 @@ import org.junit.jupiter.api.Test;
 
 import de.sqlgenerator.ComparisonOperator;
 import de.sqlgenerator.SqlObject;
+import mockup.ColumnMockup;
 import mockup.ConditionValueMockup;
 
 public class WhereClauseTest {
 
 	private ConditionValueMockup mock = new ConditionValueMockup();
+	private ColumnMockup columnMock = new ColumnMockup();
 	
 	@Test
 	@DisplayName("equals where clause")
@@ -117,6 +119,16 @@ public class WhereClauseTest {
 		List<SqlObject> stringList = Arrays.asList(new StringSqlObject("abc"), new StringSqlObject("def"), new StringSqlObject("xyz"));
 		in = new In(mock.getConditionValue_firstname(), stringList);
 		assertEquals("firstname IN ('abc','def','xyz')", in.toSQL());
+	}
+	
+	@Test
+	@DisplayName("BETWEEN where clause")
+	void between() {
+		Condition betweenInteger = new Between(columnMock.getColumn_User_age(), new NumberSqlObejct(0), new NumberSqlObejct(18));
+		assertEquals("User.age BETWEEN 0 AND 18", betweenInteger.toSQL());
+		
+		Condition betweenString = new Between(columnMock.getColumn_User_firstname(), new StringSqlObject("Andy"), new StringSqlObject("Zoro"));
+		assertEquals("User.firstname BETWEEN 'Andy' AND 'Zoro'", betweenString.toSQL());
 	}
 	
 	@Test
