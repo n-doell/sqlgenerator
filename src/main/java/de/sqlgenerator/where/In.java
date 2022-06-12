@@ -13,7 +13,6 @@ public class In extends Condition {
 	
 	public In(SqlObject leftSide, List<SqlObject> rightSide) {
 		super();
-		this.operator = ComparisonOperator.IN;
 		this.leftSide = leftSide;
 		this.rightSide = rightSide;
 	}
@@ -22,7 +21,7 @@ public class In extends Condition {
 	public String toSQL() {
 		StringJoiner joiner = new StringJoiner(" ");
 		joiner.add(leftSide.toSQL());
-		joiner.add(operator.getOperator());
+		joiner.add(LogicalOperator.IN.getValue());
 		joiner.add(getInValuesAsString());
 		return joiner.toString();
 	}

@@ -2,13 +2,14 @@ package de.sqlgenerator.where;
 
 import java.util.StringJoiner;
 
-import de.sqlgenerator.ComparisonOperator;
 import de.sqlgenerator.SqlObject;
 
 public class Like extends Condition {
 
 	public Like(SqlObject leftSide, SqlObject rightSide) {
-		super(leftSide, ComparisonOperator.LIKE, rightSide);
+		super();
+		this.leftSide = leftSide;
+		this.rightSide = rightSide;
 	}
 	
 	@Override
@@ -18,7 +19,7 @@ public class Like extends Condition {
 		
 		StringJoiner joiner = new StringJoiner(" ");
 		joiner.add(left.toSQL());
-		joiner.add(operator.getOperator());
+		joiner.add(LogicalOperator.LIKE.getValue());
 		joiner.add(right.toSQL());
 		return joiner.toString();
 	}

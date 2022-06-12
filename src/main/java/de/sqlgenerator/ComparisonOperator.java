@@ -6,9 +6,7 @@ public enum ComparisonOperator {
 	LESS_OR_EQUAL("<="),
 	GREATER_THAN(">"),
 	GREATER_OR_EQUAL(">="),
-	NOT_EQUAL("<>"),
-	LIKE("LIKE"),
-	IN("IN");
+	NOT_EQUAL("<>");
 	
 	private String operator;
 	
