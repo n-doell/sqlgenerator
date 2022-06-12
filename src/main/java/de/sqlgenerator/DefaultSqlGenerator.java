@@ -5,7 +5,7 @@ import java.util.StringJoiner;
 import de.sqlgenerator.groupby.OrderBy;
 import de.sqlgenerator.select.SelectListBuilder;
 import de.sqlgenerator.select.SelectValue;
-import de.sqlgenerator.where.ConditionBuilder;
+import de.sqlgenerator.where.WhereClauseBuilder;
 import de.sqlgenerator.where.LogicalOperator;
 import de.sqlgenerator.where.Condition;
 
@@ -13,7 +13,7 @@ public class DefaultSqlGenerator {
 
 	private Table rootTable;
 	private SelectListBuilder selectList = new SelectListBuilder();
-	private ConditionBuilder where = new ConditionBuilder();
+	private WhereClauseBuilder where = new WhereClauseBuilder();
 	
 	public DefaultSqlGenerator(Table rootTable) {
 		this.rootTable = rootTable;

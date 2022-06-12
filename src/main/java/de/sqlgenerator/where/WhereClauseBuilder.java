@@ -7,7 +7,7 @@ import java.util.StringJoiner;
 import de.sqlgenerator.SqlConst;
 import de.sqlgenerator.SqlObject;
 
-public class ConditionBuilder implements SqlObject {
+public class WhereClauseBuilder implements SqlObject {
 
 	private List<WhereClauseWithOperator> clauses = new ArrayList<WhereClauseWithOperator>();
 	
