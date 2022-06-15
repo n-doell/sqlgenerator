@@ -1,6 +1,4 @@
-package de.sqlgenerator.where;
-
-import de.sqlgenerator.SqlObject;
+package de.sqlgenerator;
 
 public class StringSqlObject implements SqlObject {
 

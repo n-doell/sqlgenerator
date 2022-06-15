@@ -2,11 +2,10 @@ package de.sqlgenerator;
 
 import java.util.StringJoiner;
 
+import de.sqlgenerator.condition.Condition;
 import de.sqlgenerator.select.SelectListBuilder;
 import de.sqlgenerator.select.SelectValue;
-import de.sqlgenerator.where.Condition;
 import de.sqlgenerator.where.ConditionBuilder;
-import de.sqlgenerator.where.LogicalOperator;
 
 public class DefaultSqlGenerator {
 

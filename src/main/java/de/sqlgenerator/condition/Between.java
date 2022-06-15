@@ -1,8 +1,9 @@
-package de.sqlgenerator.where;
+package de.sqlgenerator.condition;
 
 import java.util.StringJoiner;
 
 import de.sqlgenerator.Column;
+import de.sqlgenerator.LogicalOperator;
 import de.sqlgenerator.SqlObject;
 
 public class Between extends Condition {

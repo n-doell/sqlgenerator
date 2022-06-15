@@ -1,8 +1,11 @@
-package de.sqlgenerator.where;
+package de.sqlgenerator.condition;
 
 import java.util.StringJoiner;
 
+import de.sqlgenerator.LogicalOperator;
+import de.sqlgenerator.NumberSqlObejct;
 import de.sqlgenerator.SqlObject;
+import de.sqlgenerator.StringSqlObject;
 
 public class Like extends Condition {
 

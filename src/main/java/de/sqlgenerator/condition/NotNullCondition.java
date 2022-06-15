@@ -1,4 +1,4 @@
-package de.sqlgenerator.where;
+package de.sqlgenerator.condition;
 
 import java.util.StringJoiner;
 

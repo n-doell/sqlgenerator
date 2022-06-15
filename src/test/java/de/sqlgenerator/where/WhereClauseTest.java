@@ -10,7 +10,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import de.sqlgenerator.ComparisonOperator;
+import de.sqlgenerator.NumberSqlObejct;
 import de.sqlgenerator.SqlObject;
+import de.sqlgenerator.StringSqlObject;
+import de.sqlgenerator.condition.Condition;
+import de.sqlgenerator.condition.Between;
+import de.sqlgenerator.condition.In;
+import de.sqlgenerator.condition.Like;
+import de.sqlgenerator.condition.NotNullCondition;
+import de.sqlgenerator.condition.NullCondition;
 import mockup.ColumnMockup;
 
 public class WhereClauseTest {

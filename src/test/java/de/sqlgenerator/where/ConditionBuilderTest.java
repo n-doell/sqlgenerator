@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import de.sqlgenerator.LogicalOperator;
 import mockup.EqualsMockup;
 
 public class ConditionBuilderTest {

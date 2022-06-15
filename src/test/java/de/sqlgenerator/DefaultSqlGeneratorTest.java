@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import de.sqlgenerator.where.LogicalOperator;
 import mockup.EqualsMockup;
 import mockup.SelectValueMockup;
 import mockup.TableMockup;

@@ -1,9 +1,9 @@
 package mockup;
 
 import de.sqlgenerator.ComparisonOperator;
+import de.sqlgenerator.NumberSqlObejct;
 import de.sqlgenerator.SqlObject;
-import de.sqlgenerator.where.NumberSqlObejct;
-import de.sqlgenerator.where.Condition;
+import de.sqlgenerator.condition.Condition;
 
 public class EqualsMockup {
 
