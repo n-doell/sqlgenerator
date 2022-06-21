@@ -19,7 +19,7 @@ class NestedConditionWithOperator implements ConditionWithOperator {
 
 	@Override
 	public String getConditionAsSQLString() {
-		return nestedCondition.toSQL();
+		return "(" + nestedCondition.toSQL() + ")";
 	}
 
 	
