@@ -11,7 +11,7 @@ public class DefaultSqlGenerator {
 
 	private Table rootTable;
 	private SelectListBuilder selectList = new SelectListBuilder();
-	private ConditionBuilder where = ConditionBuilder.createWhereClauseConditionBuilder();
+	private ConditionBuilder where;
 	
 	public DefaultSqlGenerator(Table rootTable) {
 		this.rootTable = rootTable;
@@ -22,14 +22,20 @@ public class DefaultSqlGenerator {
 	}
 	
 	public void addWhereClause(Condition clause, LogicalOperator operator) {
-		where.addCondition(clause, operator);
+		if (where == null) {
+			where = ConditionBuilder.createWhereClauseConditionBuilder(clause);
+		} else {
+			where.addCondition(clause, operator);	
+		}
 	}
 	
 	public String generate() {
 		StringJoiner statement = new StringJoiner(" ");
 		statement.add(selectList.toSQL());
 		statement.add(generateFrom());
-		statement.add(where.toSQL());
+		if (where != null) {
+			statement.add(where.toSQL());	
+		}
 		
 		return statement.toString().trim();
 	}

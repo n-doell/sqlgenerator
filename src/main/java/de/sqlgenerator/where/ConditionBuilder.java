@@ -61,12 +61,28 @@ public class ConditionBuilder implements SqlObject {
 		return joiner.toString();
 	}
 	
-	public static final ConditionBuilder createWhereClauseConditionBuilder() {
-		return new ConditionBuilder(SqlConst.WHERE);
+	public static final ConditionBuilder createWhereClauseConditionBuilder(Condition condition) {
+		ConditionBuilder where = new ConditionBuilder(SqlConst.WHERE);
+		where.addCondition(condition, LogicalOperator.AND); // Operator does not matter because it is not printed for the first condition 
+		return where;
 	}
 	
-	public static final ConditionBuilder createHavingConditionBuilder() {
-		return new ConditionBuilder(SqlConst.HAVING);
+	public static final ConditionBuilder createWhereClauseConditionBuilder(ConditionBuilder nestedCondition) {
+		ConditionBuilder where = new ConditionBuilder(SqlConst.WHERE);
+		where.addNestedConditions(nestedCondition, LogicalOperator.AND); // Operator does not matter because it is not printed for the first condition 
+		return where;
+	}
+	
+	public static final ConditionBuilder createHavingConditionBuilder(Condition condition) {
+		ConditionBuilder having = new ConditionBuilder(SqlConst.HAVING);
+		having.addCondition(condition, LogicalOperator.AND); // Operator does not matter because it is not printed for the first condition 
+		return having;
+	}
+	
+	public static final ConditionBuilder createHavingConditionBuilder(ConditionBuilder nestedCondition) {
+		ConditionBuilder having = new ConditionBuilder(SqlConst.HAVING);
+		having.addNestedConditions(nestedCondition, LogicalOperator.AND); // Operator does not matter because it is not printed for the first condition 
+		return having;
 	}
 
 }

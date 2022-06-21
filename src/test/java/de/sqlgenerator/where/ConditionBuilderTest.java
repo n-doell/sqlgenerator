@@ -13,50 +13,32 @@ public class ConditionBuilderTest {
 	private EqualsMockup equalsMock = new EqualsMockup();
 	
 	@Test
-	@DisplayName("Test empty builder for where clause")
-	void emptyWhereBuilder() {
-		ConditionBuilder where = ConditionBuilder.createWhereClauseConditionBuilder();
-		assertEquals("", where.toSQL());
-	}
-	
-	@Test
 	@DisplayName("Test single condition for where clause")
 	void singleWhereCondition() {
-		ConditionBuilder builder = ConditionBuilder.createWhereClauseConditionBuilder();
-		builder.addCondition(equalsMock.getEquals_AgeEquals10(), LogicalOperator.AND);
+		ConditionBuilder builder = ConditionBuilder.createWhereClauseConditionBuilder(equalsMock.getEquals_AgeEquals10());
 		assertEquals("WHERE User.age = 10", builder.toSQL());
 	}
 	
 	@Test
 	@DisplayName("Test where condition multiple conditions")
 	void multipleWhereConditions() {
-		ConditionBuilder builder = ConditionBuilder.createWhereClauseConditionBuilder();
-		builder.addCondition(equalsMock.getEquals_AgeEquals10(), LogicalOperator.AND);
+		ConditionBuilder builder = ConditionBuilder.createWhereClauseConditionBuilder(equalsMock.getEquals_AgeEquals10());
 		builder.addCondition(equalsMock.getEquals_AgeEquals15(), LogicalOperator.OR);
 		builder.addCondition(equalsMock.getEquals_AgeEquals20(), LogicalOperator.AND);
 		assertEquals("WHERE User.age = 10 OR User.age = 15 AND User.age = 20", builder.toSQL());
 	}
 
 	@Test
-	@DisplayName("Test empty builder for having")
-	void emptyHavingBuilder() {
-		ConditionBuilder having = ConditionBuilder.createHavingConditionBuilder();
-		assertEquals("", having.toSQL());
-	}
-	
-	@Test
 	@DisplayName("Test single condition for having")
 	void singleHavingCondition() {
-		ConditionBuilder builder = ConditionBuilder.createHavingConditionBuilder();
-		builder.addCondition(equalsMock.getEquals_AgeEquals10(), LogicalOperator.AND);
+		ConditionBuilder builder = ConditionBuilder.createHavingConditionBuilder(equalsMock.getEquals_AgeEquals10());
 		assertEquals("HAVING User.age = 10", builder.toSQL());
 	}
 	
 	@Test
 	@DisplayName("Test multiple conditions for where clause")
 	void multipleHavingConditions() {
-		ConditionBuilder builder = ConditionBuilder.createHavingConditionBuilder();
-		builder.addCondition(equalsMock.getEquals_AgeEquals10(), LogicalOperator.AND);
+		ConditionBuilder builder = ConditionBuilder.createHavingConditionBuilder(equalsMock.getEquals_AgeEquals10());
 		builder.addCondition(equalsMock.getEquals_AgeEquals15(), LogicalOperator.OR);
 		builder.addCondition(equalsMock.getEquals_AgeEquals20(), LogicalOperator.AND);
 		assertEquals("HAVING User.age = 10 OR User.age = 15 AND User.age = 20", builder.toSQL());
@@ -68,25 +50,20 @@ public class ConditionBuilderTest {
 	@Test
 	@DisplayName("Test single nested condition for where clause")
 	void singleNestedConditionWhere() {
-		ConditionBuilder nestedCondition = ConditionBuilder.createWhereClauseConditionBuilder();
-		nestedCondition.addCondition(equalsMock.getEquals_AgeEquals10(), LogicalOperator.AND);
+		ConditionBuilder nestedCondition = ConditionBuilder.createWhereClauseConditionBuilder(equalsMock.getEquals_AgeEquals10());
 		
-		ConditionBuilder where = ConditionBuilder.createWhereClauseConditionBuilder();
-		where.addNestedConditions(nestedCondition, LogicalOperator.AND);
+		ConditionBuilder where = ConditionBuilder.createWhereClauseConditionBuilder(nestedCondition);
 		assertEquals("WHERE (User.age = 10)", where.toSQL());
 	}
 	
 	@Test
 	@DisplayName("Test multiple nested conditions on same level for where clause")
 	void multipleNestedConditions() {
-		ConditionBuilder nestedCondition = ConditionBuilder.createWhereClauseConditionBuilder();
-		nestedCondition.addCondition(equalsMock.getEquals_AgeEquals10(), LogicalOperator.AND);
+		ConditionBuilder nestedCondition = ConditionBuilder.createWhereClauseConditionBuilder(equalsMock.getEquals_AgeEquals10());
 		
-		ConditionBuilder nestedCondition2 = ConditionBuilder.createWhereClauseConditionBuilder();
-		nestedCondition2.addCondition(equalsMock.getEquals_AgeEquals20(), LogicalOperator.AND);
+		ConditionBuilder nestedCondition2 = ConditionBuilder.createWhereClauseConditionBuilder(equalsMock.getEquals_AgeEquals20());
 		
-		ConditionBuilder where = ConditionBuilder.createWhereClauseConditionBuilder();
-		where.addNestedConditions(nestedCondition, LogicalOperator.AND);
+		ConditionBuilder where = ConditionBuilder.createWhereClauseConditionBuilder(nestedCondition);
 		where.addNestedConditions(nestedCondition2, LogicalOperator.OR);
 		assertEquals("WHERE (User.age = 10) OR (User.age = 20)", where.toSQL());
 	}
@@ -94,20 +71,14 @@ public class ConditionBuilderTest {
 	@Test
 	@DisplayName("Test nested condition inside nested condition for where clause")
 	void nestedConditionInsideNestedCondition() {
-		ConditionBuilder nestedCondition = ConditionBuilder.createWhereClauseConditionBuilder();
-		nestedCondition.addCondition(equalsMock.getEquals_AgeEquals10(), LogicalOperator.AND);
-		
-		ConditionBuilder nestedCondition2 = ConditionBuilder.createWhereClauseConditionBuilder();
-		nestedCondition2.addCondition(equalsMock.getEquals_AgeEquals20(), LogicalOperator.AND);
-		
-		ConditionBuilder nestedCondition3 = ConditionBuilder.createWhereClauseConditionBuilder();
-		nestedCondition3.addCondition(equalsMock.getEquals_AgeEquals15(), LogicalOperator.AND);
+		ConditionBuilder nestedCondition = ConditionBuilder.createWhereClauseConditionBuilder(equalsMock.getEquals_AgeEquals10());
+		ConditionBuilder nestedCondition2 = ConditionBuilder.createWhereClauseConditionBuilder(equalsMock.getEquals_AgeEquals20());
+		ConditionBuilder nestedCondition3 = ConditionBuilder.createWhereClauseConditionBuilder(equalsMock.getEquals_AgeEquals15());
 		
 		nestedCondition.addNestedConditions(nestedCondition2, LogicalOperator.OR);
 		nestedCondition2.addNestedConditions(nestedCondition3, LogicalOperator.OR);
 		
-		ConditionBuilder where = ConditionBuilder.createWhereClauseConditionBuilder();
-		where.addNestedConditions(nestedCondition, LogicalOperator.AND);
+		ConditionBuilder where = ConditionBuilder.createWhereClauseConditionBuilder(nestedCondition);
 		
 		assertEquals("WHERE (User.age = 10 OR (User.age = 20 OR (User.age = 15)))", where.toSQL());
 	}
